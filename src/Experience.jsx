@@ -31,7 +31,7 @@ export default function Experience()
      
         
         </group>
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={isVideoOn ? 0.5 : 1.0} />
         {/* <spotLight position={[0, 10, 0]} intensity={0.1} /> */}
         <directionalLight position={[-50, 0, -40]} intensity={0.7} />
         <Intro />
