@@ -16,8 +16,12 @@ export default function Experience()
     const [hovered, set] = useState()
     useCursor(hovered, /*'pointer', 'auto', document.body*/)
     
+
     const { position } = useSpring({ position: hovered ? [0, 0.05, 1.5] : [0, 0.1, 1.5] })
 
+
+
+    
     return <>
 
         <Perf position="top-left" />
@@ -66,7 +70,7 @@ export default function Experience()
 
         }
      
-     <Astronaut position={[2, 2, -10]} scale={0.2} />
+     <Astronaut position={[2, 2, -10]} scale={1} />
         
 
 
@@ -158,15 +162,37 @@ function Carla(props) {
     return <primitive object={scene} onClick={onClick} {...props} />
     }
 
-
     function Astronaut(props) {
       const { scene } = useGLTF('/Astronaut.glb')
-     
-     
-        // If video is on, assign the video texture, else set to null
+      const meshRef = useRef();
+    
+      // Duration in seconds for one full circular rotation
+      const rotationDuration = 10;
+      // Radius of the circle
+      const radius = 5;
+      // Vertical oscillation amplitude
+      const verticalOscillationAmplitude = 0.5;
+    
+      useFrame((state) => {
+        if (meshRef.current) {
+          // Time since starting in seconds
+          const t = state.clock.elapsedTime;
+          
+          // Circular motion
+          const x = Math.cos((2 * Math.PI * t) / rotationDuration) * radius;
+          const z = Math.sin((2 * Math.PI * t) / rotationDuration) * radius;
+          
+          // Vertical oscillation
+          const y = 1;
+          
+          meshRef.current.position.set(x, y, z);
+        }
+      });
       
-      return <primitive object={scene} {...props} />
-      }
+      return <primitive object={scene} ref={meshRef} {...props} />
+    }
+    
+  
 
 
     //function to load another object
