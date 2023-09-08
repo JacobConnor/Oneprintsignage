@@ -9,3 +9,19 @@ body,
     height: 100%;
     background: ivory;
 }
+
+.playbtn {
+    width: 81px;
+    height: 81px;
+    bottom: 80px;
+    right: 50%;
+    transform: translateX(50%);
+    color: white;
+    position: absolute;
+}
+
+.menu {
+    position: absolute;
+    right: 50px;
+    top: 30px;
+}

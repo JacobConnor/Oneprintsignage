@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(document.querySelector('#root'))
 
 root.render(
     <Canvas
-    concurrent gl={{ alpha: false }}  camera={{ position: [0, 3, 95], fov: 50,  }}
+    concurrent gl={{ alpha: false }}  camera={{ position: [0, 15, 40], fov: 50,  }}
     >
        
         <Experience />
