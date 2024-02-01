@@ -6,11 +6,17 @@ import { PerspectiveCamera } from '@react-three/drei'
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+const cameraFov = isMobile ? 75 : 50; // Larger FOV for mobile
+const cameraPosition = isMobile ? [10, 10, 40] : [10, 10, 40]; // Further away for mobile
+
+
+
 root.render(
     <Canvas
-    concurrent gl={{ alpha: false }}  camera={{ position: [0, 15, 40], fov: 50,  }}
+    concurrent gl={{ alpha: false }}  camera={{ position: cameraPosition, fov: cameraFov,  }}
     >
-       
+
         <Experience />
     </Canvas>
 )
